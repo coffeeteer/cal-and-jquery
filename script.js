@@ -18,6 +18,7 @@ $(document).ready(function() {
 	// console.log(day, 'The day');
 	// console.log(day_name, 'Day Names');
 	console.log(month_name[month], 'This Month');
+	$('#present-month').append(month_name[month]);
 
 	// $('#calendar-header').append(date).append(day);
 
