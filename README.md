@@ -1,0 +1,1 @@
+This a calendar that is a full page calendar that shows a schedule that changes to be made such scheduling vacation, time off, etc;
