@@ -1,0 +1,25 @@
+{
+  "name": "cal-and-jquery",
+  "version": "1.0.0",
+  "description": "A calendar that can be used to have a calendar and use it to schedule more than one person, with options for users to make changes to the calendar\"",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "method-override": "^2.3.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coffeeteer/cal-and-jquery.git"
+  },
+  "author": "coffeeteer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coffeeteer/cal-and-jquery/issues"
+  },
+  "homepage": "https://github.com/coffeeteer/cal-and-jquery#readme"
+}
