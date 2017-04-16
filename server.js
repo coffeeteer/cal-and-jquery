@@ -18,11 +18,6 @@ app.use(bodyParser.urlencoded({
 
 app.use(methodOverride('_method'));
 
-app.engine('handlebars', exphbs({
-    defaultLayout: 'main'
-}));
-
-app.set('view engine', 'handlebars');
 
 /*---------- Routes ------------*/
 app.get('/', function(req, res) {
