@@ -11,19 +11,8 @@ $(document).ready(function() {
 	var day_name = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'];
 
 	
-	// Test results
-	// console.log(date);
-	// console.log(month, 'This Month');
-	// console.log(month_name, 'The Month Names');
-	// console.log(day, 'The day');
-	// console.log(day_name, 'Day Names');
 	console.log(month_name[month], 'This Month');
-	$('#present-month').append(month_name[month]);
+	$('#present-month-year').append(month_name[month] + ' ' + new Date().getFullYear());
 
-	// $('#calendar-header').append(date).append(day);
-
-	// Iterate throught Months
 	
-	
-
 });

@@ -1,8 +1,9 @@
 body {
 	font-family: Tahoma;
+	overflow-x: hidden;
 }
 
-#present-month {
+#present-month-year {
 	text-align: center;
 	font-size: 45px;
 }
