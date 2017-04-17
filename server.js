@@ -5,7 +5,7 @@ var cookieParser   = require('cookie-parser');
 var http           = require('http');
 var path           = require('path');
 var moment         = require('moment');
-var fullCalendar   = require('full-calendar');
+// var fullCalendar   = require('fullcalendar');
 
 moment().format();
 var app = express();
