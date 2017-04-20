@@ -15,16 +15,11 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-// app.use(methodOverride('_method'));
-
-// app.set('view engine', 'http');
 
 //***********Routes to homepage **********//
 
 app.get('/', function(req, res) {
-    res.sendFile( __dirname + '/index.html'); 
+    res.sendFile(path.join( __dirname + '/public/views/index.html')); 
 });
 
 app.listen(port, function() {
