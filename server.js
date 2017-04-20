@@ -6,7 +6,7 @@ var http           = require('http');
 var path           = require('path');
 var moment         = require('moment');
 var requirejs      = require('requirejs');
-var calendar       = require('fullcalendar');
+var fullCalendar   = require('fullcalendar');
 
 moment().format();
 var app = express();
