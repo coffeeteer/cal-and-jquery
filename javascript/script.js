@@ -10,8 +10,19 @@ $(document).ready(function() {
 	// console.log(month_name[month], 'This Month');
 	// $('#present-month-year').append(month_name[month] + ' ' + new Date().getFullYear());
 
+	requirejs.config({
+	  packages: [{
+	    name: 'moment',
+	    // This location is relative to baseUrl. Choose bower_components
+	    // or node_modules, depending on how moment was installed.
+	    location: '[bower_components|node_modules]/moment'
+	    main: 'moment'
+	  }]
+	});
+
 	$('#calendar').fullCalendar({
-        // put your options and callbacks here
-    })
+
+    });
+	
 
 });
