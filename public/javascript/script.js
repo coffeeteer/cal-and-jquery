@@ -20,7 +20,7 @@ $(document).ready(function(){
 				start: '12:00', // a start time (12pm in this example)
 			    end: '00:00', // an end time (12am in this example)	
 			}
-		 ],
-		 events: [],
+		],
+
     }); //calendar wrap
 }); //document.ready
