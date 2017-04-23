@@ -22,5 +22,30 @@ $(document).ready(function(){
 			}
 		],
 
+		events: [
+		        {
+		            title: 'Travis',
+		            start: '2010-01-01',
+		            description: 'This is a cool event'
+		        }
+		        // more events here
+		],
+	 //    eventRender: function(event, element) {
+		//         element.qtip({
+		//             content: event.description
+		//         });
+		//     }
+		// });
+
+		eventRender: function(event, element) {
+			element.qtipe({
+				content: event.title,
+				//console.log(content: event.title) 
+			});		
+	}
+
     }); //calendar wrap
+
+
+	
 }); //document.ready
