@@ -1,15 +1,12 @@
 $(document).ready(function(){
-	//var initialize_calendar;
-	//initialize_calendar = function() {
 		var calendar = $('#calendar')
 		calendar.fullCalendar({
 	        // put your options and callbacks here
 	        header: {
 	                left: ' today,prev,next,  title',
-	                right: 'month,agendaWeek,agendaDay '
+	                right: 'month,agendaWeek,agendaDay ',
 	        },
 	        aspectRatio: 2,
-	        businessHours: true,
 	        selectable: true,
 	        selectHelper: true,
 	        editable: false,
@@ -18,16 +15,16 @@ $(document).ready(function(){
 	        	$getScript('/events/new', function() {
 	        		$('#event_date_range').val(moment(start).format('MM/DD/YYYY HH:mm')); //+ ' - ' + moment(end).format()
 	        		date_range_picker();
-	        		$('.start_hidden').val(moment(start).format('MM/DD/YYYY HH:mm'));
-	        		$('.end_hidden').val(moment(end).format('MM/DD/YYYY HH:mm'));	
+	        		$('.start').val(moment(start).format('MM/DD/YYYY HH:mm'));
+	        		$('.end').val(moment(end).format('MM/DD/YYYY HH:mm'));	
 	        	});
 	        	calendar.fullCalendar('unselect');
-	        }
+	        },
+	        //calendar.fullCalendar( 'renderEvent', event [, stick ] )
+
+	        // eventRender: function(start, travis, view){
+	        // }
 	    }); //calendar wrap function
-	//};// initialize_calendar function
 
-//$(document).on('turbolinks:load', initialize_calendar);	
-
-
-	
+//$(document).on('turbolinks:load', initialize_calendar);	//Event handler
 }); //document.ready
