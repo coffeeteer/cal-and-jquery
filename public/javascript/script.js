@@ -1,50 +1,32 @@
 $(document).ready(function(){
-	$('#calendar').fullCalendar({
-        // put your options and callbacks here
-        //height: 650,
-        aspectRatio: 2,
-        header: {
-                left: ' today,prev,next,  title',
-                right: 'month,agendaWeek,agendaDay '
-        },
-        businessHours: [ 
-        	{
-			    // days of week. an array of zero-based day of week integers (0=Sunday)
-			    dow: [ 1, 2, 3, 4, 5], // Monday - Friday
+	//var initialize_calendar;
+	//initialize_calendar = function() {
+		var calendar = $('#calendar')
+		calendar.fullCalendar({
+	        // put your options and callbacks here
+	        header: {
+	                left: ' today,prev,next,  title',
+	                right: 'month,agendaWeek,agendaDay '
+	        },
+	        aspectRatio: 2,
+	        businessHours: true,
+	        selectable: true,
+	        selectHelper: true,
+	        editable: false,
 
-			    start: '08:00', // a start time (8am in this example)
-			    end: '16:00', // an end time (4pm in this example)
-			},
-			{
-				dow: [6, 0],
-				start: '12:00', // a start time (12pm in this example)
-			    end: '00:00', // an end time (12am in this example)	
-			}
-		],
+	        select: function(start, end) {
+	        	$getScript('/events/new', function() {
+	        		$('#event_date_range').val(moment(start).format('MM/DD/YYYY HH:mm')); //+ ' - ' + moment(end).format()
+	        		date_range_picker();
+	        		$('.start_hidden').val(moment(start).format('MM/DD/YYYY HH:mm'));
+	        		$('.end_hidden').val(moment(end).format('MM/DD/YYYY HH:mm'));	
+	        	});
+	        	calendar.fullCalendar('unselect');
+	        }
+	    }); //calendar wrap function
+	//};// initialize_calendar function
 
-		events: [
-		        {
-		            title: 'Travis',
-		            start: '2010-01-01',
-		            description: 'This is a cool event'
-		        }
-		        // more events here
-		],
-	 //    eventRender: function(event, element) {
-		//         element.qtip({
-		//             content: event.description
-		//         });
-		//     }
-		// });
-
-		eventRender: function(event, element) {
-			element.qtipe({
-				content: event.title,
-				//console.log(content: event.title) 
-			});		
-	}
-
-    }); //calendar wrap
+//$(document).on('turbolinks:load', initialize_calendar);	
 
 
 	
