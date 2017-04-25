@@ -11,20 +11,24 @@ $(document).ready(function(){
 	        selectHelper: true,
 	        editable: false,
 
-	        select: function(start, end) {
-	        	$getScript('/events/new', function() {
-	        		$('#event_date_range').val(moment(start).format('MM/DD/YYYY HH:mm')); //+ ' - ' + moment(end).format()
-	        		date_range_picker();
-	        		$('.start').val(moment(start).format('MM/DD/YYYY HH:mm'));
-	        		$('.end').val(moment(end).format('MM/DD/YYYY HH:mm'));	
-	        	});
-	        	calendar.fullCalendar('unselect');
-	        },
-	        //calendar.fullCalendar( 'renderEvent', event [, stick ] )
+	        events: [
+		        {
+		            title: 'Work event',
+		            start: '2010-04-04',
+		            description: 'This is a a cool event'
+		        }
+		        // more events here
+		    ],
+		    eventRender: function(event, element) {
+		        element.qtip({
+		            content: event.description
+		        });
+		    }	
 
-	        // eventRender: function(start, travis, view){
-	        // }
+			
+	        
 	    }); //calendar wrap function
 
+$(document).on('load', calendar.eventRender);
 //$(document).on('turbolinks:load', initialize_calendar);	//Event handler
 }); //document.ready
