@@ -3,28 +3,45 @@ $(document).ready(function(){
 		calendar.fullCalendar({
 	        // put your options and callbacks here
 	        header: {
-	                left: ' today,prev,next,  title',
+	                left: ' today,prev,next,title',
 	                right: 'month,agendaWeek,agendaDay ',
 	        },
 	        aspectRatio: 2,
 	        selectable: true,
 	        selectHelper: true,
 	        editable: false,
+	        // textColor: black ,// an option!
 
 	        events: [
 		        {
-		            title  : 'Big ass event',
-		            start  : '2017-04-01',
-		            description: 'Totally fucking awesome'
+		            title          : 'Day Shift',
+		            start          : '08:00',
+		            end            :  '16:00',
+		            //rendering      : 'background',
+		            textColor      : 'black' ,// an option!
+		            backgroundColor: 'orange',
+		            description    : 'Day Shift',
+		            allDay : false
+		            
+		        },
+		        {   
+		            title          : 'Afternoon Shift',
+		            start          : '16:00',
+		            end            :  '00:00',
+		            //rendering      : 'background',
+		            textColor      : 'black' ,// an option!
+		            backgroundColor: 'red',
+		            description    : 'Afternoon Shift',
+		            allDay : false
 		        },
 		        {
-		            title  : 'Bigger ass event',
-		            start  : '2017-04-04',
-		            end    : '2017-04-05'
-		        },
-		        {
-		            title  : 'Totally ass Event',
-		            start  : '2017-04-09T12:30:00',
+		         	title          : 'Midnight Shift',
+		            start          : '00:00',
+		            end            :  '08:00',
+		            //rendering      : 'background',
+		            textColor      : 'black' ,// an option!
+		            backgroundColor: 'blue',
+		            description    : 'Midnight Shift',   
 		            allDay : false // will make the time show
 		        }
 		    ]
