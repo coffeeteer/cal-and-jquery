@@ -58,7 +58,8 @@ $(document).ready(function(){
 	            	allDay         : false, // will make the time show
 	            	dow            : [ 1, 2, 3, 4, 5 ]
 		    	}
-		    ]
+		    ],
+		    
 		     
 	        
 	    }); //calendar wrap function

@@ -3,6 +3,10 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var http           = require('http');
 var path           = require('path');
+var db             = require('node-mysql');
+var DB             = db.DB;
+var BaseRow        = db.Row;
+var BaseTable      = db.Table;
 
 var app = express();
 
