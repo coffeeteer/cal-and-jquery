@@ -3,6 +3,7 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var http           = require('http');
 var path           = require('path');
+var mysql          = require('mysql');
 var db             = require('node-mysql');
 var DB             = db.DB;
 var BaseRow        = db.Row;
@@ -18,6 +19,32 @@ app.use(express.static(process.cwd() + '/public'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+/***---MySQL Database Start---***/
+var connection = mysql.createConnection({
+  host     : '127.0.0.1',
+  user     : 'root',
+  password : '',
+  database : 'cogen',
+  port     : 3306
+});
+
+connection.connect();
+
+var firstName = 'first_name';
+var lastName = 'last_name';
+
+connection.query('SELECT * from staff', function(err, rows, fields) {
+	if (!err) {
+    	console.log('The solution is: ', rows);
+  }
+ 	else {
+    	console.log('Error while performing Query.');
+ 	}
+});
+
+connection.end();
+/***---MySQL Database End---***/
 
 
 //***********Routes to homepage **********//
