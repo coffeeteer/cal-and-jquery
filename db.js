@@ -1,3 +1,4 @@
+'use strict';
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
@@ -13,21 +14,23 @@ connection.connect();
 var firstName = 'first_name';
 var lastName = 'last_name';
 
-var newEmployee = {
-	//id         : null,
-	first_name : 'Piper',
-	last_name  : 'Kerman'
-};
+/*---- Adding new employee Begin----------*/
+// var newEmployee = {
+// 	//id         : null,
+// 	first_name : 'Piper',
+// 	last_name  : 'Kerman'
+// };
 
-connection.query('INSERT INTO cogen SET ?', newEmployee, 
-	function(err, results) {
-		if(err) {
-			console.log('You erred whilst adding new employee');
-		}
-		else {
-			console.log('You insert employee name in to', results.insertId);		
-		}
-});
+// connection.query('INSERT INTO cogen SET ?', newEmployee, 
+// 	function(err, results) {
+// 		if(err) {
+// 			console.log('You erred whilst adding new employee');
+// 		}
+// 		else {
+// 			console.log('You insert employee name in to', results.insertId);		
+// 		}
+// });
+/*--------- Adding new employee End-----------*/
 
 connection.query('SELECT * from staff', function(err, rows, fields) {
 	if (!err) {
@@ -43,3 +46,5 @@ connection.query('SELECT * from staff', function(err, rows, fields) {
 });
 
 connection.end();
+
+module.exports = connection;
