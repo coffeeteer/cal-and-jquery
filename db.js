@@ -45,36 +45,36 @@ connection.query('SELECT * from staff', function(err, rows, fields) {
  	})
 });
 
+//connection.end();
+
+connection.query('SELECT * from weekshift', function(err, rows, fields) {
+	if (!err) {
+    	console.log('The solution is: ', rows);
+	}
+ 	else {
+    	console.log('Error while performing Query.');
+ 	}
+
+ 	rows.forEach(function(result){
+ 		console.log( result['shift_block'], result['time_frame']);
+ 	})
+});
+
+// connection.end();
+
+connection.query('SELECT * from weekend_shift', function(err, rows, fields) {
+	if (!err) {
+    	console.log('The solution is: ', rows);
+	}
+ 	else {
+    	console.log('Error while performing Query.');
+ 	}
+
+ 	rows.forEach(function(result){
+ 		console.log( result['shift_block'], result['time_frame']);
+ 	})
+});
+
 connection.end();
-
-// connection.query('SELECT * from dayshift', function(err, rows, fields) {
-// 	if (!err) {
-//     	console.log('The solution is: ', rows);
-// 	}
-//  	else {
-//     	console.log('Error while performing Query.');
-//  	}
-
-//  	rows.forEach(function(result){
-//  		console.log( result['shift_block'], result['time_frame']);
-//  	})
-// });
-
-// connection.end();
-
-// connection.query('SELECT * from weekend_shift', function(err, rows, fields) {
-// 	if (!err) {
-//     	console.log('The solution is: ', rows);
-// 	}
-//  	else {
-//     	console.log('Error while performing Query.');
-//  	}
-
-//  	rows.forEach(function(result){
-//  		console.log( result['shift_block'], result['time_frame']);
-//  	})
-// });
-
-// connection.end();
 
 module.exports = connection;
