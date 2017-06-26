@@ -1,32 +1,53 @@
-var express        = require('express');
-var bodyParser     = require('body-parser');
-var methodOverride = require('method-override');
-var http           = require('http');
-var path           = require('path');
-var mysql          = require('mysql');
-var db             = require('node-mysql');
-var db             = require('./db');
-//var DB             = db.DB;
-var BaseRow        = db.Row;
-var BaseTable      = db.Table;
+var http = require('http');
+var express = require('express');
+var logger = require('morgan');
+var path = require('path');
+var Promise = require('es6-promise').Promise;
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var mysql = require('mysql');
 
-var app = express();
+// var index = require('./models/index.js');
 
-console.log('process.env.PORT', process.env.PORT);
-var port = process.env.PORT || 3010;
- 
-app.use(express.static(process.cwd() + '/public'));
+const app = express();
 
-app.use(bodyParser.urlencoded({
-    extended: true
+// app.use(express.bodyParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join('./public')));
+
+app.use(logger('dev', {
+  skip: function (req, res) { return res.statusCode < 400 }
 }));
 
-//***********Routes to homepage **********//
-
-app.get('/', function(req, res) {
-    res.sendFile( path.join(__dirname + '/public/views/index.html'));
+app.get('/', (req, res) => {
+	res.sendFile(__dirname + 'index.html');
 });
 
-app.listen(port, function() {
-    console.log('connected to port ', port);
+//DHX Calendar **********************
+
+/*Using MySQL for calendar*/
+app.get('/data', function(req, res){
+    console.log('hitting app.get("data")');
+    connection.event.find().toArray(function(err, data){
+        console.log('going through connection event');
+        //set id property for all records
+        for (var i = 0; i < rows.length; i++)
+            rows[i].text;
+            console.log('hitting app.get("data") for loop');
+        //output response
+        res.send(data);
+    });
+});
+
+
+/*Using MySQL for calendar*/
+//DHX Calendar ****************************************
+
+const server = new http.Server(app);
+
+const port = process.env.PORT || 3010;
+server.listen(port, () => {
+	console.log(`connected to port ${port}`);
 });

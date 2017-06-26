@@ -1,68 +1,22 @@
 $(document).ready(function(){
-		var calendar = $('#calendar')
-		calendar.fullCalendar({
-	        // put your options and callbacks here
-	        header: {
-	                left: ' today,prev,next,title',
-	                right: 'month,agendaWeek,agendaDay ',
-	        },
-	        aspectRatio: 2,
-	        selectable: true,
-	        selectHelper: true,
-	        editable: false,
-	        // textColor: black ,// an option!
 
-	        events: [
-	        	// {
-		        //  	title          : 'Midnight Shift',
-		        //     start          : '00:00',
-		        //     end            :  '08:00',
-		        //     //rendering      : 'background',
-		        //     textColor      : 'black' ,// an option!
-		        //     backgroundColor: 'blue',
-		        //     description    : 'Midnight Shift',   
-		        //     allDay         : false // will make the time show
-		        // },
-		        // {
-		        //     title          : 'Day Shift',
-		        //     start          : '08:00',
-		        //     end            :  '16:00',
-		        //     //rendering      : 'background',
-		        //     textColor      : 'black' ,// an option!
-		        //     backgroundColor: 'yellow',
-		        //     description    : 'Day Shift',
-		        //     allDay         : false
-		            
-		        // },
-		        // {   
-		        //     title          : 'Afternoon Shift',
-		        //     start          : '16:00',
-		        //     end            : '24:00',
-		        //     // rendering      : 'background',
-		        //     textColor      : 'black' ,// an option!
-		        //     backgroundColor: 'orange',
-		        //     description    : 'Afternoon Shift',
-		        //     allDay         : false
-		        // },
-		    ],
-		    events: [
-		    	{
-		    		title          : 'Scott Walsh',
-		    		description    : 'Midnight Shift',
-		    		allDay         : false,
-	    			start          : '00:00',
-		            end            :  '08:00',
-		            //rendering      : 'background',
-		            textColor      : 'black' ,// an option!
-		            backgroundColor: 'blue',
-	            	allDay         : false, // will make the time show
-	            	dow            : [ 1, 2, 3, 4, 5 ]
-		    	}
-		    ],
-		    
-		     
-	        
-	    }); //calendar wrap function
+	var events = [
+		{id: 1, text: 'Travis G', start_date: '2017/06/16 16:00', end_date: '2017/06/17 00:00'},
+		{id: 2, text: 'Glenn H', start_date: '2017/06/16 16:15', end_date: '2017/06/17 08:00'}
+	];
 
-//$(document).on('load', calendar.eventRender);
-}); //document.ready
+	(function init() {
+		scheduler.config.xml_date='%Y-%m-%d %H:%i';
+
+    	scheduler.init('scheduler_here', new Date(), 'month'); // Starts with today's date
+
+	    scheduler.parse(events, 'json');
+	    scheduler.parse('/data', 'json');
+    })();
+
+	con.connect(function(err) {
+	  if (err) throw err;
+	  console.log('Connected!');
+	});
+    
+}); //Document.ready
