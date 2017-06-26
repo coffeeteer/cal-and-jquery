@@ -20,7 +20,7 @@ app.use(express.static(path.join('./public')));
 app.use(logger('dev', {
   skip: function (req, res) { return res.statusCode < 400 }
 }));
-
+//DHX Calendar ****************************************START
 /*-----------------Event Handlers---------------------*/
 
 //Adds records to the database
@@ -92,14 +92,11 @@ app.post('/data', function(req, res){
         res.send("Not supported operation");
 });
 /*-----------------Event Handlers---------------------*/
+//DHX Calendar ****************************************END
+
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + 'index.html');
 });
-
-//DHX Calendar **********************
-
-
-//DHX Calendar ****************************************
 
 const server = new http.Server(app);
 

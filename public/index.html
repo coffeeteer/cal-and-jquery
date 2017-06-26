@@ -36,11 +36,7 @@
         </div>
     </div>
     	<script type="text/javascript">
-    		// function init() {
-		    //     scheduler.init('scheduler_here',new Date(2017,5,4),"month");
-		    // }
-
-            
+		function init() {
             scheduler.config.xml_date='%Y-%m-%d %H:%i';
 
             var dp = new dataProcessor("/data");
@@ -51,7 +47,7 @@
 
             scheduler.templates.xml_date = function(value){ return new Date(value); };
             scheduler.load("/data", "json");
-           
+        }   
 
     	</script>
 </body>
