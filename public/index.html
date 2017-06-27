@@ -38,16 +38,22 @@
     	<script type="text/javascript">
 		function init() {
             scheduler.config.xml_date='%Y-%m-%d %H:%i';
+            scheduler.init('scheduler_here', new Date(),"month");
+
+            scheduler.templates.xml_date = function(value){ return new Date(value); };
+            scheduler.load("/data", "json");
 
             var dp = new dataProcessor("/data");
             dp.init(scheduler);
             dp.setTransactionMode("POST", false);
 
-            scheduler.init('scheduler_here', new Date(),"month");
-
-            scheduler.templates.xml_date = function(value){ return new Date(value); };
-            scheduler.load("/data", "json");
+            scheduler.parse(events, 'json');
         }   
+
+        var events = [
+            {id: 1, text: 'Travis G', start_date: '2017/06/16 16:00', end_date: '2017/06/17 00:00'},
+            {id: 2, text: 'Glenn H', start_date: '2017/06/16 16:15', end_date: '2017/06/17 08:00'}
+        ];
 
     	</script>
 </body>

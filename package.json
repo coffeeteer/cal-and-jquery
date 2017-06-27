@@ -23,7 +23,7 @@
     "express": "^4.15.3",
     "mongodb": "^2.2.28",
     "mongodb-core": "^2.1.12",
-    "mongoskin": "^2.1.0",
+    "mongoskin": "~0.6.0",
     "morgan": "^1.8.2",
     "readable-stream": "^2.2.11"
   }

@@ -25,6 +25,8 @@ app.use(logger('dev', {
 
 //Adds records to the database
 app.get('/init', function(req, res){
+    console.log('anything?')
+    db.createCollection(event, console.log('createCollection fired'));
 
     db.event.insert({ 
         text:"My test event A", 
@@ -44,14 +46,14 @@ app.get('/init', function(req, res){
 });
 
 //Loads data from the database
-app.get('/data', function(req, res){
+app.get('/getState', function(req, res){
     db.event.find().toArray(function(err, data){
         //set id property for all records
         for (var i = 0; i < data.length; i++)
             data[i].id = data[i]._id;
 
         //output response
-        res.send(data);
+        res.send(getState);
     });
 });
 
