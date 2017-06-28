@@ -17,7 +17,7 @@
 	<script src="/codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script><!-- DHX Scheduler -->
 	<script type="text/javascript" src="/javascript/script.js"></script>
 </head>
-<body id="body" onload="init();" > <!-- ready="init();" -->
+<body id="body" id='init' > <!-- ready="init();" --> <!-- onload="init();" -->
 	<div id="calendar" class="experiment">Hello, interwebs</div>
 
     <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
@@ -35,8 +35,14 @@
         <div class="dhx_cal_data">
         </div>
     </div>
-    	<script type="text/javascript">
-		function init() {
+	<script type="text/javascript">
+    $('#init').ready(function(){
+        var events = [
+            {id: 1, text: 'Travis G', start_date: '2017/06/16 16:00', end_date: '2017/06/17 00:00'},
+            {id: 2, text: 'Glenn H', start_date: '2017/06/16 16:15', end_date: '2017/06/17 08:00'}
+        ];
+
+		(function init() {
             scheduler.config.xml_date='%Y-%m-%d %H:%i';
             scheduler.init('scheduler_here', new Date(),"month");
 
@@ -48,13 +54,9 @@
             dp.setTransactionMode("POST", false);
 
             scheduler.parse(events, 'json');
-        }   
+        })();   
+    }); 
 
-        var events = [
-            {id: 1, text: 'Travis G', start_date: '2017/06/16 16:00', end_date: '2017/06/17 00:00'},
-            {id: 2, text: 'Glenn H', start_date: '2017/06/16 16:15', end_date: '2017/06/17 08:00'}
-        ];
-
-    	</script>
+	</script>
 </body>
 </html>
