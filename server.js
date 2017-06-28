@@ -25,18 +25,20 @@ app.use(logger('dev', {
 
 //Adds records to the database
 app.get('/init', function(req, res){
+    scheduler.config.xml_date='%Y-%m-%d %H:%i';
     console.log('anything?')
     db.createCollection(event, console.log('createCollection fired'));
 
     db.event.insert({ 
-        text:"My test event A", 
-        start_date: new Date(2017,5,25),
-        end_date:   new Date(2017,5,26)
+        text:'Person 1', 
+        start_date: new Date(2017,5,25, 0800),
+        end_date:   new Date(2017,5,26, 1600),
+        color: '#eee'
     });
     db.event.insert({ 
-        text:"One more test event", 
-        start_date: new Date(2017,5,5),
-        end_date:   new Date(2017,5,6),
+        text:'Person 2', 
+        start_date: new Date(2017,5,5, 1600),
+        end_date:   new Date(2017,5,6, 2359),
         color: "#BADA55"
     });
 
@@ -55,43 +57,6 @@ app.get('/getState', function(req, res){
         //output response
         res.send(getState);
     });
-});
-
-app.post('/data', function(req, res){
-    var data = req.body;
-
-    //get operation type
-    var mode = data["!nativeeditor_status"];
-    //get id of record
-    var sid = data.id;
-    var tid = sid;
-
-    //remove properties which we do not want to save in DB
-    delete data.id;
-    delete data.gr_id;
-    delete data["!nativeeditor_status"];
-
-
-    //output confirmation response
-    function update_response(err, result){
-        if (err)
-            mode = "error";
-        else if (mode == "inserted")
-            tid = data._id;
-
-        res.setHeader("Content-Type","text/xml");
-        res.send("<data><action type='"+mode+"' sid='"+sid+"' tid='"+tid+"'/></data>");
-    }
-
-    //run db operation
-    if (mode == "updated")
-        db.event.updateById( sid, data, update_response);
-    else if (mode == "inserted")
-        db.event.insert(data, update_response);
-    else if (mode == "deleted")
-        db.event.removeById( sid, update_response);
-    else
-        res.send("Not supported operation");
 });
 /*-----------------Event Handlers---------------------*/
 //DHX Calendar ****************************************END
