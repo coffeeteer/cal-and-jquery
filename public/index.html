@@ -10,14 +10,14 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 
 	<!-- <script type="text/javascript" src="http://cdn.alloyui.com/3.0.1/aui/aui-min.js"></script> -->
-	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script> -->
+	<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script> -->
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 	<script src="/codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script><!-- DHX Scheduler -->
 	<script type="text/javascript" src="/javascript/script.js"></script>
 </head>
-<body id="body" id='init' > <!-- ready="init();" --> <!-- onload="init();" -->
+<body id="body" onload="init();" > <!-- ready="init();" --> <!-- onload="init();" -->
 	<div id="calendar" class="experiment">Hello, interwebs</div>
 
     <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
@@ -36,26 +36,29 @@
         </div>
     </div>
 	<script type="text/javascript">
-    $('#init').ready(function(){
+        
+
         var events = [
             {id: 1, text: 'Travis G', start_date: '2017/06/16 16:00', end_date: '2017/06/17 00:00'},
             {id: 2, text: 'Glenn H', start_date: '2017/06/16 16:15', end_date: '2017/06/17 08:00'}
         ];
 
-		(function init() {
+		function init() {
             scheduler.config.xml_date='%Y-%m-%d %H:%i';
             scheduler.init('scheduler_here', new Date(),"month");
 
             scheduler.templates.xml_date = function(value){ return new Date(value); };
-            scheduler.load("/data", "json");
+            scheduler.setLoadMode('/data', 'json');
+            scheduler.load('/data', 'json');
+            // console.log(scheduler.setLoadMode('/data'));
+            // console.log(scheduler.load('/data', 'json'));
 
             var dp = new dataProcessor("/data");
             dp.init(scheduler);
             dp.setTransactionMode("POST", false);
 
             scheduler.parse(events, 'json');
-        })();   
-    }); 
+        };   
 
 	</script>
 </body>

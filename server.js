@@ -11,7 +11,6 @@ var db = require('mongoskin').db("mongodb://localhost:27017/cogen", { w: 0});
 
 const app = express();
 
-// app.use(express.bodyParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -48,14 +47,13 @@ app.get('/init', function(req, res){
 });
 
 //Loads data from the database
-app.get('/getState', function(req, res){
+app.get('/data', function(req, res){
     db.event.find().toArray(function(err, data){
-        //set id property for all records
         for (var i = 0; i < data.length; i++)
             data[i].id = data[i]._id;
 
         //output response
-        res.send(getState);
+        res.send(data);
     });
 });
 /*-----------------Event Handlers---------------------*/
