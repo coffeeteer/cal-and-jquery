@@ -78,15 +78,16 @@
 
 <script type="text/javascript" charset="utf-8">
     function init() {
-        scheduler.config.xml_date="%Y-%m-%d %H:%i";
-        scheduler.init('scheduler_here',new Date(),"month");
+        scheduler.config.xml_date="%Y-%m-%d %H:%i"; //changes date format   
+        scheduler.init('scheduler_here',new Date(),"month"); // when the calendar is initialized
 
         scheduler.templates.xml_date = function(value){ return new Date(value); };
         scheduler.load("/data", "json");    
 
         var dp = new dataProcessor("/data");
         dp.init(scheduler);
-        dp.setTransactionMode("POST", false);
+        dp.setTransactionMode("POST", true);
+        console.log('init on index finished');
     }
 </script>
 

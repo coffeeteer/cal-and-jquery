@@ -4,6 +4,7 @@
   "description": "Demo of dhtmlxScheduler with nodeJs backend\r ===================",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "~3.3.8",
     "mongoskin": "~0.6.0"
   },
