@@ -86,6 +86,8 @@ app.post('/data', function(req, res){
 
 EDITOR="C\\PROGRA~1\\SUBLIM~1\\sublime-text.exe"
 
-
-app.listen(3000);
-console.log('listening on port 3000');
+const port = process.env.port || 3000;
+app.listen(port, function(){
+    console.log(`Server started on port ${port}`);
+});
+// console.log('listening on port 3000');
