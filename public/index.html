@@ -1,68 +1,9 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title>Busch Cogen Calendar</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-	<link rel="stylesheet" href="/codebase/dhtmlxscheduler.css" type="text/css" media="screen" title="no title" charset="utf-8"> 
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
-
-	
-	<script src="/codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript" src="/javascript/script.js"></script>
-</head>
-<body id="body" onload="init();" > 
-	<div id="calendar" class="experiment">Hello, interwebs</div>
-
-    <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
-        <div class="dhx_cal_navline">
-            <div class="dhx_cal_prev_button">&nbsp;</div>
-            <div class="dhx_cal_next_button">&nbsp;</div>
-            <div class="dhx_cal_today_button"></div>
-            <div class="dhx_cal_date"></div>
-            <div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
-            <div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
-            <div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
-        </div>
-        <div class="dhx_cal_header">
-        </div>
-        <div class="dhx_cal_data">
-        </div>
-    </div>
-	<script type="text/javascript">
-        
-
-        var events = [
-            {id: 1, text: 'Travis G', start_date: '2017/06/16 16:00', end_date: '2017/06/17 00:00'},
-            {id: 2, text: 'Glenn H', start_date: '2017/06/16 16:15', end_date: '2017/06/17 08:00'}
-        ];
-
-		function init() {
-            scheduler.config.xml_date='%Y-%m-%d %H:%i';
-            scheduler.init('scheduler_here', new Date(),"month");
-
-            scheduler.templates.xml_date = function(value){ return new Date(value); };
-            scheduler.setLoadMode('/data', 'json');
-            scheduler.load('/data', 'json');
-            // console.log(scheduler.setLoadMode('/data'));
-            // console.log(scheduler.load('/data', 'json'));
-
-            var dp = new dataProcessor("/data");
-            dp.init(scheduler);
-            dp.setTransactionMode("POST", false);
-
-            scheduler.parse(events, 'json');
-        }
-
-	</script>
-</body>
-</html> -->
-
-<!doctype html>
+<!DOCTYPE html>
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Basic initialization</title>
 </head>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css" media="screen" title="no title" charset="utf-8">
 
