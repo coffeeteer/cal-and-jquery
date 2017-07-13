@@ -5,12 +5,16 @@ var bodyParser = require('body-parser');
 
 var db = require('mongoskin').db("mongodb://localhost:27017/testdb", { w: 0});
     db.bind('event');
+    // db.event.find().toArray(function(err, items) {
+    //     db.close();
+    // });  
 
 
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.bodyParser());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.bodyParser());
+app.use(express.cookieParser());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/init', function(req, res){
